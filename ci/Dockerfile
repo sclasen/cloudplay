@@ -23,6 +23,9 @@ RUN service jenkins stop
 RUN mkdir /jenkins
 ENV JENKINS_HOME /jenkins
 
+ADD https://s3.amazonaws.com/sclasen-docker/jenkins-heroku/jenkins-plugins.tar.gz /jenkins/jenkins-plugins.tar.gz
+RUN $(cd jenkins && tar xfz /jenkins/jenkins-plugins.tar.gz)
+
 RUN rm /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/security/java.security
 ADD usr/lib/jvm/java-7-openjdk-amd64/jre/lib/security/java.security /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/security/java.security
 
