@@ -15,6 +15,6 @@ sh -c "echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.
 apt-get update
 apt-get install -q -y lxc-docker
 docker pull sclasen/jenkins-heroku
-docker run -d -p 8080:8080 sclasen/jenkins-heroku
+docker run -d -p 80:8080 sclasen/jenkins-heroku
 
 --===============8914358521411176884==--
