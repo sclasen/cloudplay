@@ -37,14 +37,12 @@ trait ProcessType extends GlobalSettings {
   }
 
   def startReporter(app:Application,proc:String){
-    val libratoUsername = app.configuration.getString("librato.username")
-    val libratoToken = app.configuration.getString("librato.token")
-    val libratoInterval = app.configuration.getInt("librato.interval").getOrElse(30).toLong
-    val appName = app.configuration.getString("heroku.app")
     import scalaz.std.option._
     import scalaz.syntax.applicative._
-    (libratoUsername |@| libratoToken) {
+    (app.configuration.getString("librato.username") |@| app.configuration.getString("librato.token")) {
       (user, token) =>
+      val libratoInterval = app.configuration.getInt("librato.interval").getOrElse(30).toLong
+      val appName = app.configuration.getString("heroku.app")
       val appPrefix = appName.map(_.replace('-','.'))
       val addApp = new Sanitizer {
         //the sanitizer can be applied more than once, so we make sure to only add the prefix once
