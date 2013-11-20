@@ -25,8 +25,10 @@ trait ProcessType extends GlobalSettings {
     startReporter(app,proc)
   }
 
-  val boneCPAttributes = List("TotalLeased", "TotalFree", "TotalCreatedConnections", "ConnectionWaitTimeAvg", "StatementExecuteTimeAvg", "StatementPrepareTimeAvg", "StatementsPrepared",
-    "CacheHits", "CacheMiss", "StatementsCached", "ConnectionsRequested", "CumulativeConnectionWaitTime", "CacheHitRatio", "StatementsExecuted", "CumulativeStatementExecutionTime", "CumulativeStatementPrepareTime")
+  val boneCPAttributes = List("TotalLeased", "TotalFree", "TotalCreatedConnections", "ConnectionWaitTimeAvg",
+    "StatementExecuteTimeAvg", "StatementPrepareTimeAvg", "StatementsPrepared", "CacheHits", "CacheMiss",
+    "StatementsCached", "ConnectionsRequested", "CumulativeConnectionWaitTime", "CacheHitRatio",
+    "StatementsExecuted", "CumulativeStatementExecutionTime", "CumulativeStatementPrepareTime")
 
   def setupBoneCPMetrics(app: Application) {
     if (!app.configuration.getBoolean("db.default.disableJMX").getOrElse(true)) {

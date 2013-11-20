@@ -11,7 +11,9 @@ object ApplicationBuild extends Build {
     "com.codahale.metrics" % "metrics-core" % "3.0.1",
     "com.librato.metrics" % "metrics-librato" % "3.0.1.RC2",
     "org.scalaz" %% "scalaz-core" % "7.0.4",
-    "org.postgresql" % "postgresql" % "9.3-1100-jdbc41"
+    "org.postgresql" % "postgresql" % "9.3-1100-jdbc41",
+    "com.typesafe.akka" %% "akka-agent" % "2.2.0"
+
 
   )
 

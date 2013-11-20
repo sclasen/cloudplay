@@ -1,0 +1,19 @@
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>app=${HEROKU_APP} component=%logger{0} level=%level %m%n</Pattern>
+        </layout>
+    </appender>
+
+
+
+    <logger name="com.sun.xml.internal.bind.v2.runtime.reflect.opt.Injector" level="INFO"/>
+    <logger name="sun.rmi" level="INFO"/>
+    <logger name="javax.management" level="INFO"/>
+    <logger name="services.MetricsReportingService" level="INFO"/>
+    <logger name="com.heroku.play.api.libs.caching.CachingService" level="WARN"/>
+    <root level="${LOG_LEVEL}">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>
+
