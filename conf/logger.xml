@@ -1,5 +1,5 @@
 <configuration>
-    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="CONSOLE" class="com.heroku.play.api.libs.logging.ActorBasedConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>app=${HEROKU_APP} component=%logger{0} level=%level %m%n</Pattern>
         </layout>
