@@ -18,6 +18,18 @@ object ApplicationBuild extends Build {
 
   val main = play.Project(appName, appVersion, appDependencies).settings{
     resolvers += "oss" at "https://oss.sonatype.org/content/repositories/snapshots"
-  }.settings(net.virtualvoid.sbt.graph.Plugin.graphSettings: _*)
+  }.settings(net.virtualvoid.sbt.graph.Plugin.graphSettings: _*).settings( initialCommands := initConsole)
+
+  def initConsole =
+    """
+      |import com.heroku.play.api.libs.security.CredentialsService
+      |import play.api.Play.current
+      |def startApp = new play.core.StaticApplication(new java.io.File("."))
+      |def stopApp = play.api.Play.stop()
+      |lazy val client = new services.Services{}
+      |import client._
+    """.stripMargin
+
+
 
 }
