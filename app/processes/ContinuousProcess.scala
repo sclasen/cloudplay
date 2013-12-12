@@ -12,10 +12,10 @@ import akka.agent.Agent
 import play.api.db.DB
 import anorm._
 import java.sql.Connection
-import services.{LockType, LockService}
+import services.{Services, LockType, LockService}
 import org.slf4j.LoggerFactory
 
-object ContinuousProcess{
+object ContinuousProcess extends Services{
 
   val log = LoggerFactory.getLogger("Continuous")
   val system = Akka.system
@@ -36,7 +36,7 @@ object ContinuousProcess{
   def process(id:Long){
     DB.withTransaction{
       implicit c:Connection =>
-        LockService.withTransactionalLock(id, LockType.CONTINUOUS_LOCK){
+        lockSvc.withTransactionalLock(id, LockType.CONTINUOUS_LOCK){
           log.info(s"got lock for $id")
            SQL("select pg_sleep(1)").execute()
         }.getOrElse{

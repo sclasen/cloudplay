@@ -77,3 +77,11 @@ object Continuous extends ProcessType {
     processes.ContinuousProcess.start()
   }
 }
+
+object Migration extends ProcessType {
+  override def onStart(app: Application) = {
+    log.info("Starting ProcessType: Migration")
+    start(app, "migration")
+    processes.MigrationProcess.start()
+  }
+}

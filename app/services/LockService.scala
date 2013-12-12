@@ -6,9 +6,8 @@ import language.reflectiveCalls
 import anorm._
 import anorm.SqlParser._
 
-//Say not caking
 
-object LockService extends LockService
+private [services] object LockService extends LockService
 
 trait LockService {
 
